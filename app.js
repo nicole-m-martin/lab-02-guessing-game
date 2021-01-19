@@ -1,46 +1,31 @@
-// import { compareNumbers } from '../compareNumbers.js';
+import { compareNumbers } from './compareNumbers.js';
 
-// import { compareNumbers } from "./compareNumbers";
-
-const guessInput = document.getElementById('user-input');
+const guessInput = document.getElementById('guess-input');
 const goButton = document.getElementById('go-button');
-const countDown = document.getElementById('count-down');
-const results = document.getElementById('results');
-// console.log(guessInput, goButton, countDown, results);
+const resultsSpan = document.getElementById('results');
+
+let userGuesses = 4;
+let correctNumber = Math.ceil(Math.random() * 20);
 
 
-let allGuesses = 4;
-let rightNumber = Math.ceil(Math.random() * 20);
-
-goButton.addEventListener('click', () => {
-    // console.log(rightNumber);
-    allGuesses--;
+goButton.addEventListener('click', () => { 
+//  console.log(correctNumber);
+    --userGuesses;
+    if (userGuesses === 0) {
+        goButton.disabled = true;    
+    }
 
     const numberInput = Number(guessInput.value);
-    // const compareResults = compareNumbers (guess, correctNumber);
+    const gameResults = compareNumbers(numberInput, correctNumber);
 
-    countDown.textContent = `There's ${allGuesses} guesses left!`;
-    
-    if (allGuesses === 0) {
-        goButton.disabled = true;
+    if (gameResults === -1) {
+        resultsSpan.textContent = `To Low! Try again to beat me! You have ${userGuesses} left.... `;
+    }
+    if (gameResults === 1) {
+        resultsSpan.textContent = `To High! Guess again if you must! You now have ${userGuesses} to go.....`;
+    }
+    if (gameResults === 0) {
+        resultsSpan.textContent = 'Ok...I knew you were smart! You got the correct number!!';
     }
 
-    const endResult = compareNumbers(numberInput, rightNumber);
-
-    
-    if (endResult === -1); {
-        results.textContent = `To Low! Guess again!`;
-    }
-   
-    if (endResult === +1); {
-        results.textContent = `To High! Guess again!`;
-    }
-
-    if (endResult === 0); {
-        results.textContent = `Winner Winner!`;
-    }
-
-    
-    
 });
-
