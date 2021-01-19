@@ -3,6 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&family=Potta+One&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles/style.css" />
 
     <title>Guessing Game!</title>
@@ -13,19 +18,18 @@
     </header>
 
     <main>
-      <h2>Rules</h2>
+      <h2>Rules:</h2>
 
-      <div class="instructions">
+      <section class="instructions">
         <div>Guess a number between 1 and 20, then click GO!</div>
-        <div>You get 4 tries! You can do it!!</div>
-      </div>
+        <div>You get to go 4 times only! You can do it!!</div>
+      </section>
 
       <div class="box">
         <input id="guess-input" type="number" />
         <button id="go-button" class="btn">GO!</button>
       </div>
-
-      <div>
+      <div class="box-2">
         <span id="results"></span>
       </div>
     </main>
